@@ -1,0 +1,53 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Producten</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Registreer</li>
+  </ol>
+</nav>
+<h4>Registreer</h4>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="email">E-mailadres</label>
+      <input type="text" class="form-control" id="email" required [(ngModel)]="model.email"name="email"#email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+     		E-mailadres is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="password">Wachtwoord</label>
+      <input type="password" class="form-control" id="password" required [(ngModel)]="model.password"name="password"#password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+     		Wachtwoord is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="name">Naam</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="model.name" required name="name"#name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Naam is verplicht
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="street">Straat</label>
+      <input type="text" class="form-control" id="street" required [(ngModel)]="model.street"name="street"#street="ngModel">
+      <div [hidden]="street.valid || street.pristine" class="alert alert-danger">
+     		Straat is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="postalCode">Postcode</label>
+      <input type="text" class="form-control" id="postalCode" required [(ngModel)]="model.postalCode"name="postalCode"#postalCode="ngModel">
+      <div [hidden]="postalCode.valid || postalCode.pristine" class="alert alert-danger">
+     		Postcode is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="address">Woonplaats</label>
+      <input type="text" class="form-control" id="address" required [(ngModel)]="model.address"name="address"#address="ngModel">
+      <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+     		Woonplaats is verplicht
+			</div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Account aanmaken</button>
+  </form>
+<br>

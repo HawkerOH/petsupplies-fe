@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="jumbotron">
+  <div class="container">
+  	 <div class="row">
+  	 	<div class="col"><h1 class="display-6">{{title}}</h1></div>
+      <div class="col col-lg-2"><a routerLink="/register">Registreren</a></div>
+  		<div class="col col-lg-2">
+        <button type="button" class="btn btn-sm btn-link">
+          <a routerLink="/checkout">
+            <i class="fa fa-shopping-cart" style="font-size:36px;color:orange"></i>
+            <span class="badge-container">
+              <strong class="badge">{{ productsInCart }}</strong>
+            </span>
+          </a>
+        </button>
+      </div>
+  	 </div>
+  </div>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+

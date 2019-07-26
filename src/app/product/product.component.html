@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Producten</li>
+  </ol>
+</nav>
+<div *ngIf="showMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="showMessage=false">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of products">
+    <div class="card mb-4 box-shadow" style="width: 20rem; height: 16rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <div class="d-flex justify-content-between align-items-center mycard-footer">
+          <span class="text-info"> {{product.price | currency:'€':'symbol':'1.2':'nl'}} </span>
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToCart(product)" ><i class="fa fa-shopping-cart"></i></button>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Producten</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Winkelwagen</li>
+  </ol>
+</nav>
+<h4>Winkelwagen</h4>
+<br>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>Aantal</th>
+			<th></th>
+			<th class="text-right">Prijs</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let cartitem of model.cartItems" >
+			<td *ngIf="cartitem !== undefined">{{cartitem.product.name}}</td>
+			<td *ngIf="cartitem !== undefined">
+				<div class="btn-group mr-2" role="group" aria-label="Second group">
+			    <button type="button" class="btn btn-light" (click)="removeOne(cartitem)">
+			    	<i class="fa fa-minus" style="font-size:12px;color:blue"></i>
+			    </button>
+			    <button type="button" class="btn btn-light" disabled=""><b>{{cartitem.quantity}}</b></button>
+			    <button type="button" class="btn btn-light" (click)="addOne(cartitem)" 
+			    	[disabled]="cartitem.quantity==99">
+			    	<i class="fa fa-plus" style="font-size:12px;color:blue"></i>
+			    </button>
+			  </div>
+			</td>
+			<td *ngIf="cartitem !== undefined">
+				<button type="button" class="btn btn-link" (click)="removeItem(cartitem)">
+					<i class="fa fa-trash-alt" style="font-size:18px;color:red"></i>
+				</button>
+			</td>
+			<td *ngIf="cartitem !== undefined" class="text-right">{{cartitem.getTotalPrice() | currency:'€':'symbol':'1.2':'nl'}}</td>
+		</tr>
+		<tr>
+			<td> <b>Totaal:</b> </td>
+			<td></td>
+			<td></td>
+			<td class="text-right"><b>{{totalPrice() | currency:'€':'symbol':'1.2':'nl'}}</b></td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<h5>Bestel informatie</h5>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="email">E-mailadres</label>
+      <input type="text" class="form-control" id="email" required [(ngModel)]="model.email"name="email"#email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+     		E-mailadres is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="name">Naam</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="model.name" required name="name"#name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Naam is verplicht
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="street">Straat</label>
+      <input type="text" class="form-control" id="street" required [(ngModel)]="model.street"name="street"#street="ngModel">
+      <div [hidden]="street.valid || street.pristine" class="alert alert-danger">
+     		Straat is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="postalCode">Postcode</label>
+      <input type="text" class="form-control" id="postalCode" required [(ngModel)]="model.postalCode"name="postalCode"#postalCode="ngModel">
+      <div [hidden]="postalCode.valid || postalCode.pristine" class="alert alert-danger">
+     		Postcode is verplicht
+			</div>
+    </div>
+    <div class="form-group">
+      <label for="city">Woonplaats</label>
+      <input type="text" class="form-control" id="city" required [(ngModel)]="model.city"name="city"#city="ngModel">
+      <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+     		Woonplaats is verplicht
+			</div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Bestelling plaatsen</button>
+  </form>
+  <br>
+  <br>
+  <br>
