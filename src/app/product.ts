@@ -3,6 +3,7 @@ export class Product {
 	name: string;
 	description: string;
 	price: number;
+	categories: string;
 
 	constructor() {	}
 

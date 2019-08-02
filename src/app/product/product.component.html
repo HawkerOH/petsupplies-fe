@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Producten</li>
+    <li class="breadcrumb-item">Products/Producten</li>
   </ol>
 </nav>
 <div *ngIf="showMessage" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -9,12 +9,25 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">All</a>
+    <a class="dropdown-item" href="#">Only Food</a>
+    <a class="dropdown-item" href="#">Only Toys</a>
+    <a class="dropdown-item" href="#">Only Medicins</a>
+  </div>
+</div> -->
+
 <div class="row">
   <div class="col-md-4" *ngFor="let product of products">
     <div class="card mb-4 box-shadow" style="width: 20rem; height: 16rem;">
       <div class="card-body">
         <h5 class="card-title">{{product.name}}</h5>
         <p class="card-text">{{product.description}}</p>
+        <span class="badge badge-primary">{{product.categories}}</span>
         <div class="d-flex justify-content-between align-items-center mycard-footer">
           <span class="text-info"> {{product.price | currency:'€':'symbol':'1.2':'nl'}} </span>
           <div class="btn-group">
